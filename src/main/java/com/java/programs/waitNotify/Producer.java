@@ -24,6 +24,16 @@ public class Producer implements Runnable {
         }
     }
 
+    /*
+    wait(): It tells the calling thread to give up the lock and go to sleep until some other thread enters the same
+    monitor and calls notify().
+    The wait() method releases the lock prior to waiting and reacquires the lock prior to
+    returning from the wait() method.
+    The wait() method is actually tightly integrated with the synchronization lock, using a feature not available directly
+    from the synchronization mechanism.
+
+    In other words, it is not possible for us to implement the wait() method purely in Java. It is a native method.
+     */
     private void produce(int i) throws InterruptedException {
         synchronized (taskQueue) {
             while (taskQueue.size() == MAX_CAPACITY) {
